@@ -31,8 +31,9 @@ public class CoinChanger {
 		TreeMap<Integer, Integer> change = constructHashMapByCurrencySet();
 		while (rest >= currencySet.first()) {
 			Integer highestLower = currencySet.lower(rest+1);
-			change.put(highestLower, change.get(highestLower)+1);
-			rest -= highestLower;
+			Integer numberOfCoins = rest/highestLower;
+			change.put(highestLower, change.get(highestLower)+numberOfCoins);
+			rest = rest%highestLower;
 		}
 		if (rest!=0) notEnoughChange();
 		return change;		
@@ -48,9 +49,4 @@ public class CoinChanger {
 	{
 		throw new RuntimeException(NOT_ENOUGH_CHANGE_DESCRIPTION);
 	}
-	
-	
-
-	
-
 }

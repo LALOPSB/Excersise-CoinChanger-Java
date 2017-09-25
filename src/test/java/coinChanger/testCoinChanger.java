@@ -5,21 +5,23 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import stack.Stack;
 
 public class testCoinChanger {
 
 	private CoinChanger coinChanger;
 	private CoinChanger coinChangerCharged;
+	private CoinChanger coinChangerBritish;
 
 	@Before
 	public void setUp() throws Exception {
 		coinChanger = new CoinChanger();
 		coinChangerCharged = new CoinChanger();
+		coinChangerBritish = new CoinChanger();
 		coinChangerCharged.addCurrencyCoinDenomination(5);
 		coinChangerCharged.addCurrencyCoinDenomination(10);
 		coinChangerCharged.addCurrencyCoinDenomination(25);
 		coinChangerCharged.addCurrencyCoinDenomination(100);
+		
 	}
 
 	@Test
@@ -48,6 +50,7 @@ public class testCoinChanger {
 	
 	@Test
 	public void testItReturnsTheHighestDenominationAvailable() {
+		System.out.println((coinChangerCharged.getChangeOf(90)));
 		assertTrue((coinChangerCharged.getChangeOf(90)).get(25)==3);
 		assertTrue((coinChangerCharged.getChangeOf(90)).get(10)==1);
 		assertTrue((coinChangerCharged.getChangeOf(90)).get(5)==1);
